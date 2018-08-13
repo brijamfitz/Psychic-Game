@@ -1,3 +1,4 @@
+
 var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 var wins = 0;
@@ -15,11 +16,11 @@ document.onkeyup = function(event) {
 
     // Determines which key was pressed.
     var userLetter = event.key;
-
+    
     console.log(userLetter === computerLetter);
     
     // If userkey === computerkey
-        if (userLetter === computerLetter) {
+    if (userLetter === computerLetter) {
 
         // Increase wins by 1
         wins++;
@@ -27,7 +28,7 @@ document.onkeyup = function(event) {
         // Reset guess letters
 
         // Reset game
-        }
+    }
 
     // If userkey !== computerkey
     else if (userLetter !== computerLetter) {
@@ -36,6 +37,7 @@ document.onkeyup = function(event) {
 
         // Decrease guess attempts by 1
         guessesLeft--;
+
             // As long as guess attempts < 10
 
                 // If that is true - reset to 1
@@ -47,7 +49,7 @@ document.onkeyup = function(event) {
     else {
         console.log(wins);
     
-    }
+}
 
         var html =
           "<h1>The Psychic Game</h1>" + "<br>" +
