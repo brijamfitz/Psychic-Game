@@ -1,4 +1,3 @@
-
 var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 var wins = 0;
@@ -31,7 +30,7 @@ document.onkeyup = function(event) {
     }
 
     // If userkey !== computerkey
-    else if (userLetter !== computerLetter) {
+    if (userLetter !== computerLetter) {
 
         // Log userkey in 'guesses' field
 
@@ -44,6 +43,11 @@ document.onkeyup = function(event) {
 
                 // If false - increase losses by 1, reset game *
 
+    }
+
+    if (guessesLeft === 0) {
+        guessesLeft = 9;
+        losses++;
     }
 
     else {
