@@ -10,32 +10,39 @@ var computerLetter = computerChoices[Math.floor(Math.random() * computerChoices.
 
 console.log(computerLetter);
 
+function resetGame() {
+    wrongLetter = [];
+}
+
 // 1. User makes keystroke
 document.onkeyup = function(event) {
-
-    // Determines which key was pressed.
-    var userLetter = event.key;
-    
-    console.log(userLetter === computerLetter);
+    var userLetter = String.fromCharCode(event.keyCode);
+   
+    console.log(userLetter.toLowerCase() === computerLetter);
     
     // If userkey === computerkey
-    if (userLetter === computerLetter) {
-
+    if (userLetter.toLowerCase() === computerLetter) {
+        
         // Increase wins by 1
         wins++;
+        document.getElementById('wins').textContent = wins;  
+        guessesLeft = 9;
+        resetGame()
 
         // Reset guess letters
 
         // Reset game
+        
     }
 
     // If userkey !== computerkey
-    if (userLetter !== computerLetter) {
+    if (userLetter.toLowerCase() !== computerLetter) {
 
         // Log userkey in 'guesses' field
 
         // Decrease guess attempts by 1
         guessesLeft--;
+        document.getElementById('guessesLeft').textContent = guessesLeft;
 
             // As long as guess attempts < 10
 
@@ -46,24 +53,16 @@ document.onkeyup = function(event) {
     }
 
     if (guessesLeft === 0) {
+        losses++;    
+        document.getElementById('losses').textContent = losses;
         guessesLeft = 9;
-        losses++;
-    }
+        resetGame()
+              
+    }  
 
     else {
-        console.log(wins);
+        wrongLetter.push(userLetter.toLowerCase());
+        document.getElementById('guessedLetters').textContent = wrongLetter;
+    }
     
-}
-
-        var html =
-          "<h1>The Psychic Game</h1>" + "<br>" +
-          "<p>Guess what letter I'm thinking of</p>" + "<br>" +
-          "<p>Wins: " + wins + "</p>" + "<br>" +
-          "<p>Losses: " + losses + "</p>" + "<br>" +
-          "<p>Guess left: " + guessesLeft + "</p>" + "<br>" +
-          "<p>Your guesses so far: " + wrongLetter + "</p>";
-
-        // Set the inner HTML contents of the #game div to our html string
-        document.querySelector("#game").innerHTML = html;
-
 };
